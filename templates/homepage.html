@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+    <head>
+        <title>
+            Cowboy rocks
+        </title>
+    </head>
+    <body>
+        {% set homepage = transistor.model('homepage') %}
+        <h1>
+            {{ homepage.title }}
+        </h1>
+        <section>
+            {{ transistor.model('homepage.body') }}
+        </section>
+      
+        <section>
+            <h2>Last works</h2>
+            <ul>
+                {% for name, work in transistor.model('works') %}
+                <li>
+                    {{name}}
+                    <a href="{{work.getUrl()}}">{{work.title}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Pagination works</h2>
+            <ul>
+                {% paginate transistor.model('works').range(3) %}
+
+                {% for name, elem in _paginate.entries %}
+                    <li>
+                        {{elem.title}}
+                    </li>
+                {% endfor %}
+            </ul>
+            {% if _paginate.previousUrl|length > 0 %}
+                <a href="{{_paginate.previousUrl}}">Previous page</a>
+            {% endif %}
+
+            {% for elem in _paginate.getPrevUrls(5) %}
+                <a href="{{elem.url}}">{{elem.page}}</a>
+            {% endfor %}
+
+            {{_paginate.currentPage}}
+
+            {% for elem in _paginate.getNextUrls(5) %}
+                <a href="{{elem.url}}">{{elem.page}}</a>
+            {% endfor %}
+            
+            {% if _paginate.nextUrl|length > 0 %}
+                <a href="{{_paginate.nextUrl }}">Next page</a>
+            {% endif %}
+        </section>
+    </body>
+</html>

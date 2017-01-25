@@ -1,0 +1,16 @@
+{
+  "name": "transistor-exemple",
+  "version": "0.0.1",
+  "description": "Static generator",
+  "main": "index.js",
+  "scripts": {
+    "build": "node transistor",
+    "serve": "http-server ./site -a localhost -p 4040 -o"
+  },
+  "author": "Antoine Ghigny",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "http-server": "^0.9.0",
+    "transistor": "0.0.2"
+  }
+}

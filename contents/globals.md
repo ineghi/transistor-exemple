@@ -1,0 +1,3 @@
+---
+    siteUrl: 'www.exemple.com' 
+---
